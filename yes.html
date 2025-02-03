@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay! ❤️</title>
+    <style>
+        /* General Styling */
+        body {
+            text-align: center;
+            background-image: url('pic5.jpeg'); /* Change this to your background */
+            background-size: cover;
+            background-position: center;
+            color: #AB1E8F;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 40px 20px; /* Increased padding */
+            overflow-y: auto; /* Allow scrolling if content exceeds viewport */
+            min-height: 100vh; /* Ensure at least the viewport height */
+            position: relative;
+        }
+
+        /* Add background overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+            z-index: -1; /* Keep overlay behind content */
+        }
+
+        /* Header Styling */
+        h1 {
+            font-size: 3.5em;
+            margin-top: 80px; /* Adjusted margin to account for the fixed navbar */
+            margin-bottom: 20px; /* Increased margin */
+            animation: fadeIn 2s ease-in-out;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        h3 {
+            font-size: 1.7em; /* Increased font size */
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px; /* Added margin */
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 30px; /* Increased margin */
+            animation: fadeIn 3s ease-in-out;
+            color: #fff;
+        }
+
+        /* Video Grid Styling */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 30px; /* Increased gap between videos */
+            max-width: 80%;
+            margin-top: 30px; /* Increased top margin */
+            width: 100%;
+        }
+
+        .video-wrapper {
+            text-align: center;
+            margin-bottom: 30px; /* Increased space below each video */
+        }
+
+        video {
+            width: 100%;
+            max-width: 350px; /* Increased width limit */
+            height: auto; /* Prevent stretching vertically */
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            object-fit: contain; /* Preserve aspect ratio */
+        }
+
+        .description {
+            font-size: 1.2em;
+            margin-top: 15px; /* Increased space between video and description */
+            font-style: italic;
+            padding-top: 15px;
+        }
+
+        /* Keyframes for fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, auto);
+                gap: 25px; /* Adjusted gap for smaller screens */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .video-grid {
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: repeat(6, auto);
+                gap: 20px; /* Adjusted gap for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Content -->
+    <h1>Yay! You said YES! 💖</h1>
+    <h3>(Anyways you can't say NO to me 😆)</h3>
+    <p>Here are some of my favourite moments💕</p>
+    
+    <div class="video-grid" id="videos">
+        <!-- Row 1 -->
+        <div class="video-wrapper">
+            <video id="video1" class="video" controls>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="description">You blushing while looking at my snap pictures 😚</p>
+        </div>
+
+        <div class="video-wrapper">
+            <video id="video2" class="video" controls>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="description">The 'Chaukandi' capsicum recipe <br>
+                🥰</p>
+        </div>
+
+        <div class="video-wrapper">
+            <video id="video3" class="video" controls>
+                <source src="video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="description">One 'oye' and you are there all scared 😂</p>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="video-wrapper">
+            <video id="video4" class="video" controls>
+                <source src="video4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="description">Aren't you a diva? Very Demure 😂❤️</p>
+        </div>
+
+        <div class="video-wrapper">
+            <video id="video5" class="video" controls>
+                <source src="video7.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="description">Full Daddy vibes, Do you wanna fuck ?</p>
+        </div>
+
+        <div class="video-wrapper">
+            <video id="video6" class="video" controls>
+                <source src="video6.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="description">One of my favorite memories, though you were drunk. "Gaoge, ladki phasaoge" 💖</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Arrow Key Video Control -->
+    <script>
+        // Video elements
+        const videos = document.querySelectorAll('video');
+        let currentIndex = 0;
+
+        // Function to play a video
+        function playVideo(index) {
+            videos.forEach(video => video.pause()); // Pause all videos
+            videos[index].play(); // Play the selected video
+        }
+
+        // Function to go to the next video
+        function nextVideo() {
+            currentIndex = (currentIndex + 1) % videos.length; // Loop back to the first video
+            playVideo(currentIndex);
+        }
+
+        // Function to go to the previous video
+        function prevVideo() {
+            currentIndex = (currentIndex - 1 + videos.length) % videos.length; // Loop back to the last video
+            playVideo(currentIndex);
+        }
+
+        // Event listener for arrow keys
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                nextVideo(); // Next video on right arrow
+            } else if (event.key === 'ArrowLeft') {
+                prevVideo(); // Previous video on left arrow
+            }
+        });
+    </script>
+</body>
+</html>
